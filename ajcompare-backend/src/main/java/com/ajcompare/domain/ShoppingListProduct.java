@@ -1,29 +1,31 @@
 package com.ajcompare.domain;
 
-import java.util.UUID;
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Entity
-public class Product {
+public class ShoppingListProduct {
     @Id
     @GeneratedValue()
     private Integer id;
+    private Integer shoppingListId;
     private String name;
+    private String superMarket;
     private String url;
     private Date date;
     private Double price;
 
-    public Product() {
+    public ShoppingListProduct() {
 
     }
 
-    public Product(Integer id, String name, String url, Date date, Double price) {
+    public ShoppingListProduct(Integer id, Integer shoppingListId, String name, String superMarket, String url, Date date, Double price) {
         this.id = id;
+        this.shoppingListId = shoppingListId;
         this.name = name;
+        this.superMarket = superMarket;
         this.url = url;
         this.date = date;
         this.price = price;
@@ -31,9 +33,15 @@ public class Product {
 
     public Integer getId() { return id; }
 
+    public Integer getShoppingListId() { return shoppingListId; }
+
     public String getName() { return name; }
 
     public void setName(String name) { this.name = name; }
+
+    public String getSuperMarket() { return superMarket; }
+
+    public void setSuperMarket(String superMarket) { this.superMarket = superMarket; }
 
     public String getUrl() { return url; }
 

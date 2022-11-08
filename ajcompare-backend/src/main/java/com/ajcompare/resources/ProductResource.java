@@ -1,34 +1,50 @@
 package com.ajcompare.resources;
 
 import com.ajcompare.domain.Product;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.Set;
-import java.net.URI;
+import com.ajcompare.service.ProductService;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import javax.inject.Inject;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.MediaType;
+import java.net.URI;
+import java.util.List;
 
-
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 @Path("/api/products")
 public class ProductResource {
 
-    private Set<Product> products = Collections.newSetFromMap(Collections.synchronizedMap(new LinkedHashMap<>()));
+    @Inject
+    ProductService productService;
 
     public ProductResource(){
-        products.add(new Product("","","",0.0));
     }
 
     @GET
-    public Set<Product> allProducts() {
-        return products;
+    public List<Product> allProducts() {
+        return productService.allProducts();
+    }
+
+    @GET
+    @Path("/{productId}")
+    public Product getProductById(Integer productId) {
+        return productService.getProductById(productId);
+    }
+
+    @DELETE
+    @Path("/{productId}")
+    public Long deleteProduct(Integer productId) { return productService.deleteProduct(productId); }
+
+    @PUT
+    @Path("/{productId}")
+    public Product updateProduct(Product product) {
+        return productService.updateProduct(product);
     }
 
     @POST
     public Response addProduct(Product product) {
-        products.add(product);
-        return Response.created(URI.create("/api/products/" + 1)).build();
+        Product productWithId = productService.addProduct(product);
+        return Response.created(URI.create("/api/products/" + productWithId.getId())).build();
     }
 }
