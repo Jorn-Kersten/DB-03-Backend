@@ -2,6 +2,8 @@ package com.ajcompare.service;
 
 import com.ajcompare.domain.User;
 import com.ajcompare.repository.UserRepository;
+import io.quarkus.security.UnauthorizedException;
+import io.quarkus.security.identity.SecurityIdentity;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -14,16 +16,25 @@ public class UserService {
     @Inject
     UserRepository userRepository;
 
+    @Inject
+    SecurityIdentity securityIdentity;
+
     public UserService() {
     }
 
-    public User getUser(Integer id) {
-        return userRepository.find("id", id).firstResult();
+    public User getUser(String userName) {
+        if (userName == null){
+            throw new IllegalArgumentException();
+        }
+
+        if (!securityIdentity.getPrincipal().getName().equals(userName)){
+            throw new UnauthorizedException();
+        }
+        return userRepository.find("name", userName).firstResult();
     }
 
-    @Transactional
     public User createUser(User user) {
-        if (user == null)
+        if (user.getName() == null || user.getEmail() == null)
         {
             throw new IllegalArgumentException();
         }

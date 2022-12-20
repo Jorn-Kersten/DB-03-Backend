@@ -17,6 +17,7 @@ dependencies {
     implementation 'io.quarkus:quarkus-resteasy-reactive-jackson'
     implementation 'io.quarkus:quarkus-arc'
     implementation 'io.quarkus:quarkus-resteasy-reactive'
+    testImplementation 'io.quarkus:quarkus-test-security'
 
     // libraries for dataaccess
     implementation("io.quarkus:quarkus-jdbc-mariadb")

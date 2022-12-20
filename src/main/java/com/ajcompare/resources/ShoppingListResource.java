@@ -4,7 +4,6 @@ import com.ajcompare.domain.ShoppingList;
 import com.ajcompare.service.ShoppingListService;
 
 import javax.inject.Inject;
-import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;

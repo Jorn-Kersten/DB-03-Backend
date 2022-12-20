@@ -19,9 +19,7 @@ public class Product {
     private Date date;
     private Double price;
 
-    public Product() {
-
-    }
+    public Product() {}
 
     public Product(Integer id, String name, String supermarket, String url, Date date, Double price) {
         this.id = id;
@@ -33,24 +31,14 @@ public class Product {
     }
 
     public Integer getId() { return id; }
-
     public String getName() { return name; }
-
     public void setName(String name) { this.name = name; }
-
     public String getSupermarket() { return supermarket; }
-
     public void setSupermarket(String supermarket) { this.supermarket = supermarket; }
-
     public String getUrl() { return url; }
-
     public void setUrl(String url) { this.url = url; }
-
     public Date getDate() { return date; }
-
     public void setDate(Date date) { this.date = date; }
-
     public Double getPrice() { return price; }
-
     public void setPrice(Double price) { this.price = price; }
 }
