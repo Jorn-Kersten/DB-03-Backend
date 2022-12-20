@@ -10,14 +10,19 @@ repositories {
 
 dependencies {
     implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+    implementation 'io.quarkus:quarkus-keycloak-authorization'
+    implementation 'io.quarkus:quarkus-oidc-client'
+    implementation 'io.quarkus:quarkus-oidc'
+    implementation 'io.quarkus:quarkus-security-jpa'
     implementation 'io.quarkus:quarkus-resteasy-reactive-jackson'
     implementation 'io.quarkus:quarkus-arc'
     implementation 'io.quarkus:quarkus-resteasy-reactive'
+    testImplementation 'io.quarkus:quarkus-test-security'
 
     // libraries for dataaccess
     implementation("io.quarkus:quarkus-jdbc-mariadb")
     implementation("io.quarkus:quarkus-hibernate-orm-rest-data-panache")
-
+    implementation 'io.quarkus:quarkus-jdbc-h2:2.13.3.Final'
 
     testImplementation 'io.quarkus:quarkus-junit5'
     testImplementation 'io.rest-assured:rest-assured'
