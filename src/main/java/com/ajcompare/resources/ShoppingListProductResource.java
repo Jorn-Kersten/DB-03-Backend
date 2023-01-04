@@ -24,37 +24,40 @@ public class ShoppingListProductResource {
     }
 
     @GET
-    @Path("/{userId}")
-    public List<ShoppingListProduct> allShoppingListProducts(Integer userId) {
-        return shoppingListProductService.allShoppingListProducts(userId);
+    @Path("/{userName}")
+    public List<ShoppingListProduct> allShoppingListProducts(String userName) {
+        return shoppingListProductService.allShoppingListProducts(userName);
     }
 
     @GET
-    @Path("/{userId}/{shoppingListId}")
-    public List<ShoppingListProduct> getOldShoppingListProducts(Integer userId, Integer shoppingListId) {
-        return shoppingListProductService.getOldShoppingListProducts(userId, shoppingListId);
+    @Path("/{userName}/{shoppingListId}")
+    public List<ShoppingListProduct> getOldShoppingListProducts(String userName, Integer shoppingListId) {
+        return shoppingListProductService.getOldShoppingListProducts(userName, shoppingListId);
     }
 
     @GET
-    @Path("/{productId}")
-    public ShoppingListProduct getShoppingListProductById(Integer productId) {
-        return shoppingListProductService.getShoppingListProductById(productId);
+    @Path("/{userName}/{productId}")
+    public ShoppingListProduct getShoppingListProductById(String userName, Integer productId) {
+        return shoppingListProductService.getShoppingListProductById(userName, productId);
     }
 
     @DELETE
-    @Path("/{productId}")
-    public Long deleteShoppingListProduct(Integer productId) { return shoppingListProductService.deleteShoppingListProduct(productId); }
+    @Path("/{userName}/{productId}")
+    public Long deleteShoppingListProduct(String userName, Integer productId) {
+        return shoppingListProductService.deleteShoppingListProduct(userName, productId);
+    }
 
     @PUT
-    @Path("/{productId}")
-    public ShoppingListProduct updateShoppingListProduct(ShoppingListProduct shoppingListProduct) {
-        return shoppingListProductService.updateShoppingListProduct(shoppingListProduct);
+    @Path("/{userName}/{productId}")
+    public ShoppingListProduct updateShoppingListProduct(String userName, Integer productId, ShoppingListProduct shoppingListProduct) {
+        return shoppingListProductService.updateShoppingListProduct(userName, productId, shoppingListProduct);
     }
 
     @POST
-    @Path("/{userId}")
-    public Response addShoppingListProduct(Integer userId, ShoppingListProduct shoppingListProduct) {
-        ShoppingListProduct shoppingListProductWithId = shoppingListProductService.addShoppingListProduct(userId, shoppingListProduct);
+    @Path("/{userName}")
+    public Response addShoppingListProduct(String userName, ShoppingListProduct shoppingListProduct) {
+        System.out.println(shoppingListProduct.getId() + " " + shoppingListProduct.getShoppingListId());
+        ShoppingListProduct shoppingListProductWithId = shoppingListProductService.addShoppingListProduct(userName, shoppingListProduct);
         return Response.created(URI.create("/api/shoppingList/products/" + shoppingListProductWithId.getId())).build();
     }
 }

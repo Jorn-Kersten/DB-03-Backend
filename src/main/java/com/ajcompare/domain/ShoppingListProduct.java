@@ -12,9 +12,9 @@ public class ShoppingListProduct {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer shoppingListId;
-    private Integer userId;
     private Integer quantity;
     private Double content;
+    private String userName;
     private String name;
     private String superMarket;
     private String url;
@@ -25,12 +25,12 @@ public class ShoppingListProduct {
 
     }
 
-    public ShoppingListProduct(Integer id, Integer userId, Integer shoppingListId, Integer quantity, Double content, String name, String superMarket, String url, Date date, Double price) {
+    public ShoppingListProduct(Integer id, Integer shoppingListId, Integer quantity, Double content, String userName, String name, String superMarket, String url, Date date, Double price) {
         this.id = id;
-        this.userId = userId;
         this.shoppingListId = shoppingListId;
         this.quantity = quantity;
         this.content = content;
+        this.userName = userName;
         this.name = name;
         this.superMarket = superMarket;
         this.url = url;
@@ -39,10 +39,6 @@ public class ShoppingListProduct {
     }
 
     public Integer getId() { return id; }
-
-    public Integer getUserId() { return userId; }
-
-    public void setUserId(Integer userId) { this.userId = userId; }
 
     public Integer getShoppingListId() { return shoppingListId; }
 
@@ -55,6 +51,10 @@ public class ShoppingListProduct {
     public Double getContent() { return content; }
 
     public void setContent(Double content) { this.content = content; }
+
+    public String getUserName() { return userName; }
+
+    public void setUserName(String userName) { this.userName = userName; }
 
     public String getName() { return name; }
 
