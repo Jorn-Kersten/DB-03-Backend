@@ -1,6 +1,9 @@
 INSERT INTO users (name, email)
 VALUES ('admin', 'admin@gmail.com');
 
+INSERT INTO shoppinglist (date, name, supermarket, totalprice)
+VALUES ('2022-10-12', 'test list', 'Albert Heijn', 0.00);
+
 INSERT INTO product (name, supermarket, url, date, price, content)
 VALUES ('Coca-Cola', 'Albert Heijn', 'https://www.ah.nl/producten/product/wi2800/coca-cola-regular', '2022-10-12', 2.49, 0.5);
 INSERT INTO product (name, supermarket, url, date, price, content)

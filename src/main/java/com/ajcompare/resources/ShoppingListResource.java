@@ -39,6 +39,6 @@ public class ShoppingListResource {
     @Path("/{userName}")
     public Response addShoppingList(String userName, ShoppingList shoppingList) {
         ShoppingList shoppingListWithId = shoppingListService.addShoppingList(userName, shoppingList);
-        return Response.created(URI.create("/api/shoppingLists/" + shoppingListWithId.getId())).build();
+        return Response.created(URI.create("/api/user/shoppingLists/" + shoppingListWithId.getId())).build();
     }
 }

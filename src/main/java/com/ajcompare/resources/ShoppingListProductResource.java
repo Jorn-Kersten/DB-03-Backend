@@ -56,7 +56,6 @@ public class ShoppingListProductResource {
     @POST
     @Path("/{userName}")
     public Response addShoppingListProduct(String userName, ShoppingListProduct shoppingListProduct) {
-        System.out.println(shoppingListProduct.getId() + " " + shoppingListProduct.getShoppingListId());
         ShoppingListProduct shoppingListProductWithId = shoppingListProductService.addShoppingListProduct(userName, shoppingListProduct);
         return Response.created(URI.create("/api/shoppingList/products/" + shoppingListProductWithId.getId())).build();
     }

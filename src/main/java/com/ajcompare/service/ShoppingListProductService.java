@@ -43,7 +43,6 @@ public class ShoppingListProductService {
         else {
             shoppingListId = 1;
         }
-        System.out.println(shoppingListId);
         return shoppingListId;
     }
 
@@ -133,8 +132,6 @@ public class ShoppingListProductService {
         Integer shoppingListId = getLastShoppingListId(userName);
 
         shoppingListProduct.setUserName(userName);
-//        System.out.println(shoppingListId);
-//        System.out.println(shoppingListProduct.getId() + " " + shoppingListProduct.getShoppingListId() + " " + shoppingListProduct.getQuantity() + " " + shoppingListProduct.getContent() + " " + shoppingListProduct.getUserName() + " " + shoppingListProduct.getName() + " " + shoppingListProduct.getSuperMarket() + " " + shoppingListProduct.getUrl() + " " + shoppingListProduct.getDate() + " " + shoppingListProduct.getPrice());
         shoppingListProduct.setShoppingListId(shoppingListId);
 
         shoppingListProductRepository.persist(shoppingListProduct);

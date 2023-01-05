@@ -56,9 +56,8 @@ public class ShoppingListService {
         {
             throw new IllegalArgumentException();
         }
-
+        System.out.println(shoppingList.getId() +""+ shoppingList.getSuperMarket() +""+ shoppingList.getName() +""+ shoppingList.getDate() +""+ shoppingList.getTotalPrice());
         shoppingListRepository.persist(shoppingList);
-        System.out.println(shoppingList.getId() + " "+ shoppingList.getName() + " " + shoppingList.getDate());
         return shoppingList;
     }
 }

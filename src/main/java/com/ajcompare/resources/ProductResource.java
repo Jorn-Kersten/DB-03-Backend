@@ -29,6 +29,8 @@ public class ProductResource {
     @GET
     @Path("/{productId}")
     public Product getProductById(Integer productId) {
+
+        System.out.println(productId);
         return productService.getProductById(productId);
     }
 
@@ -38,9 +40,7 @@ public class ProductResource {
 
     @PUT
     @Path("/{productId}")
-    public Product updateProduct(Product product) {
-        return productService.updateProduct(product);
-    }
+    public Product updateProduct(Product product) { return productService.updateProduct(product); }
 
     @POST
     public Response addProduct(Product product) {
