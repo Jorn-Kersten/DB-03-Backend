@@ -30,7 +30,6 @@ public class ProductResource {
     @Path("/{productId}")
     public Product getProductById(Integer productId) {
 
-        System.out.println(productId);
         return productService.getProductById(productId);
     }
 
