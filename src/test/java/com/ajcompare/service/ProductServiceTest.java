@@ -15,7 +15,7 @@ public class ProductServiceTest {
     ProductService productService;
 
     @Test
-    public void UpdateProduct_EqualsExpectedProduct_True() {
+    public void testUpdateProduct() {
         //arrange
         Product expectedProduct = new Product(1, "test", "Albert Heijn", "https://www.ah.nl/producten/product/wi2800/coca-cola-regular", new Date(2022-10-12), 2.49, 0.5);
 

@@ -17,7 +17,7 @@ public class UserServiceTest {
 
     @Test
     @TestSecurity(user = "admin", roles = "user")
-    public void testGetUserAndIdIsEqualToTestId() {
+    public void testGetUser() {
         //arrange
         User expectedUser = new User(1, "admin", "admin@gmail.com");
 
