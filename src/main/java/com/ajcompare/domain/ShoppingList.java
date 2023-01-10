@@ -12,7 +12,6 @@ public class ShoppingList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer productListId;
     private String name;
     private String supermarket;
     private Date date;
@@ -22,8 +21,7 @@ public class ShoppingList {
 
     }
 
-    public ShoppingList(Integer productListId, String name, String supermarket, Date date, Double totalPrice) {
-        this.productListId = productListId;
+    public ShoppingList(String name, String supermarket, Date date, Double totalPrice) {
         this.name = name;
         this.supermarket = supermarket;
         this.date = date;
@@ -31,8 +29,6 @@ public class ShoppingList {
     }
 
     public Integer getId() { return id; }
-
-    public Integer getProductListId() { return productListId; }
 
     public String getName() { return name; }
 

@@ -2,6 +2,7 @@ package com.ajcompare.resources;
 
 import com.ajcompare.domain.ShoppingList;
 import com.ajcompare.service.ShoppingListService;
+import io.quarkus.security.Authenticated;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -12,7 +13,8 @@ import java.util.List;
 
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-@Path("/api/shoppingLists")
+@Authenticated
+@Path("/api/user/shoppingLists")
 public class ShoppingListResource {
 
     @Inject
@@ -22,19 +24,21 @@ public class ShoppingListResource {
     }
 
     @GET
-    public List<ShoppingList> allShoppingLists() {
+    @Path("/{userName}")
+    public List<ShoppingList> allShoppingLists(String userName) {
         return shoppingListService.allShoppingLists();
     }
 
     @GET
-    @Path("/{shoppingListId}")
-    public ShoppingList getShoppingListById(Long shoppingListId) {
-        return shoppingListService.getShoppingListById(shoppingListId);
+    @Path("{userName}/{shoppingListId}")
+    public ShoppingList getShoppingListById(String userName, Integer shoppingListId) {
+        return shoppingListService.getShoppingListById(userName, shoppingListId);
     }
 
     @POST
-    public Response addShoppingList(ShoppingList shoppingList) {
-        ShoppingList shoppingListWithId = shoppingListService.addShoppingList(shoppingList);
-        return Response.created(URI.create("/api/shoppingLists/" + shoppingListWithId.getId())).build();
+    @Path("/{userName}")
+    public Response addShoppingList(String userName, ShoppingList shoppingList) {
+        ShoppingList shoppingListWithId = shoppingListService.addShoppingList(userName, shoppingList);
+        return Response.created(URI.create("/api/user/shoppingLists/" + shoppingListWithId.getId())).build();
     }
 }

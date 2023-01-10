@@ -45,23 +45,14 @@ public class ProductService {
     @Transactional
     public Product updateProduct(Product product) {
         Product productTemp = productRepository.find("id",product.getId()).firstResult();
-        if (product.getName() != ""){
-            productTemp.setName(product.getName());
-        }
-        if (product.getUrl() != ""){
-            productTemp.setUrl(product.getUrl());
-        }
-        if (product.getDate() != null){
-            productTemp.setDate(product.getDate());
-        }
-        if (product.getPrice() != null   ){
-            productTemp.setPrice(product.getPrice());
+        if (product == null){
+            throw new IllegalArgumentException();
         }
 
         productRepository.update("update Product p set p.name = :name, p.url = :url, p.date = :date, p.price = :price where p.id = :id",
-                new Parameters().with("name", productTemp.getName()).and("url", productTemp.getUrl()).and("date", productTemp.getDate()).and("price", productTemp.getPrice()).and("id", productTemp.getId()));
+                new Parameters().with("name", product.getName()).and("url", product.getUrl()).and("date", product.getDate()).and("price", product.getPrice()).and("id", product.getId()));
 
-        return product = productRepository.find("id",product.getId()).firstResult();
+        return product;
     }
 
     @Transactional
