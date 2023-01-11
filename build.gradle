@@ -1,6 +1,14 @@
 plugins {
     id 'java'
     id 'io.quarkus'
+    id "jacoco"
+    id "org.sonarqube" version "3.5.0.2730"
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
 }
 
 repositories {
@@ -43,4 +51,12 @@ compileJava {
 
 compileTestJava {
     options.encoding = 'UTF-8'
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "Jorn-Kersten_DB-03-Backend"
+        property "sonar.organization", "jorn-kersten"
+        property "sonar.host.url", "https://sonarcloud.io"
+    }
 }
