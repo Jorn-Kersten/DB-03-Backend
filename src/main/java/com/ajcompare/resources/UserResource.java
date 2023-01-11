@@ -34,7 +34,6 @@ public class UserResource {
     @Path("/register")
     public Response createUser(User user) {
         User newUser = userService.createUser(user);
-        System.out.println("temp test");
         return Response.created(URI.create("/api/user/" + newUser.getName())).build();
     }
 }
